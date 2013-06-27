@@ -1,14 +1,20 @@
 @ECHO OFF
+
+setlocal
+
+set Build=Build
+set Tools=Tools
+
 ECHO.
 ECHO.
 
 REM ensure _Build_Output directory exists
-mkdir Build 2>NUL
+mkdir %Build% 2>NUL
 
 ECHO Checking Tools
-cd Tools
+pushd %Tools%
 Nuget install packages.config -excludeversion
-cd ..
+popd
 
 ECHO.
 ECHO.
