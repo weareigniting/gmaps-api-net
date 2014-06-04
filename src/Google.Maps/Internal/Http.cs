@@ -28,21 +28,21 @@ namespace Google.Maps.Internal
 	/// </summary>
 	public static class Http
 	{
-	    /// <summary>
-	    /// How old can a cached response be at max?
-	    /// </summary>
-	    public static TimeSpan DefaultCacheLifeTime = TimeSpan.FromDays(1);
+		/// <summary>
+		/// How old can a cached response be at max?
+		/// </summary>
+		public static TimeSpan DefaultCacheLifeTime = TimeSpan.FromDays(1);
 
 
-	    /// <summary>
-	    /// Get the 
-	    /// </summary>
-	    /// <param name="uri"></param>
-	    /// <param name="forceNoCache"></param>
-	    /// <returns></returns>
-	    public static HttpGetResponse Get(Uri uri, bool forceNoCache = false)
+		/// <summary>
+		/// Get the 
+		/// </summary>
+		/// <param name="uri"></param>
+		/// <param name="forceNoCache"></param>
+		/// <returns></returns>
+		public static HttpGetResponse Get(Uri uri, bool forceNoCache = false)
 		{
-            return Factory.CreateResponse(uri, forceNoCache);
+			return Factory.CreateResponse(uri, forceNoCache);
 		}
 
 		/// <summary>
@@ -57,15 +57,15 @@ namespace Google.Maps.Internal
 		public class HttpGetResponseFactory
 		{
 
-		    /// <summary>
-		    /// Builds a standard HttpGetResponse instance.
-		    /// </summary>
-		    /// <param name="uri"></param>
-		    /// <param name="forceNoCache"></param>
-		    /// <returns></returns>
-		    public virtual HttpGetResponse CreateResponse(Uri uri, bool forceNoCache = false)
+			/// <summary>
+			/// Builds a standard HttpGetResponse instance.
+			/// </summary>
+			/// <param name="uri"></param>
+			/// <param name="forceNoCache"></param>
+			/// <returns></returns>
+			public virtual HttpGetResponse CreateResponse(Uri uri, bool forceNoCache = false)
 			{
-                return new CachedHttpGetResponse(uri, forceNoCache);
+				return new CachedHttpGetResponse(uri, forceNoCache);
 			}
 		}
 
