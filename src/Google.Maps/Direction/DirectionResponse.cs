@@ -14,5 +14,7 @@ namespace Google.Maps.Direction
 
 		[JsonProperty("routes")]
 		public DirectionRoute[] Routes { get; set; }
+
+        public string RequestUrl { get; set; }
 	}
 }

@@ -16,6 +16,7 @@
  */
 
 using System.Linq;
+using System.Runtime.Remoting;
 using NUnit.Framework;
 using Google.Maps.Direction;
 using System;

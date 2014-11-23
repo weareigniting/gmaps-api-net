@@ -52,6 +52,8 @@ namespace Google.Maps.Direction
 		/// </summary>
 		public bool? Sensor { get; set; }
 
+        public bool IncludeTraffic { get; set; }
+
 		private List<Location> _waypoints;
 		public IEnumerable<Location> Waypoints
 		{
@@ -120,6 +122,14 @@ namespace Google.Maps.Direction
 				.Append("sensor", Sensor.Value ? "true" : "false")
 				.Append("avoid", AvoidHelper.MakeAvoidString(Avoid))
 				.Append("alternatives", Alternatives.HasValue ? (Alternatives.Value ? "true" : "false") : (string)null);
+
+		    if (IncludeTraffic)
+		    {
+                var dt = DateTime.UtcNow;
+                var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                var s = (int)(dt - epoch).TotalSeconds;
+		        qsb.Append("departure_time", s.ToString());
+		    }
 
 			var url = "json?" + qsb.ToString();
 

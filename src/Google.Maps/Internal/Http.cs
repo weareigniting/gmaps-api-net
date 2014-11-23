@@ -29,6 +29,8 @@ namespace Google.Maps.Internal
 	{
 		public class HttpGetResponse
 		{
+            public string RequestUrl { get; set; }
+
 			protected Uri RequestUri { get; set; }
 
 			public HttpGetResponse(Uri uri)
@@ -46,6 +48,8 @@ namespace Google.Maps.Internal
 				{
 					uri = new Uri(signingInstance.GetSignedUri(uri));
 				}
+
+			    RequestUrl = uri.ToString();
 
 				WebResponse response = WebRequest.Create(uri).GetResponse();
 
